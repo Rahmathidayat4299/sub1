@@ -3,6 +3,7 @@ package com.dicoding.jetpackcompose.travelingapp.core.data.source.local
 import androidx.lifecycle.LiveData
 import com.dicoding.jetpackcompose.travelingapp.core.data.source.local.entity.TourismEntity
 import com.dicoding.jetpackcompose.travelingapp.core.data.source.local.room.TourismDao
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Rahmat Hidayat on 23/01/2023.
@@ -18,11 +19,11 @@ class LocalDataSource private constructor(private val tourismDao: TourismDao) {
             }
     }
 
-    fun getAllTourism(): LiveData<List<TourismEntity>> = tourismDao.getAllTourism()
+    fun getAllTourism(): Flow<List<TourismEntity>> = tourismDao.getAllTourism()
 
-    fun getFavoriteTourism(): LiveData<List<TourismEntity>> = tourismDao.getFavoriteTourism()
+    fun getFavoriteTourism(): Flow<List<TourismEntity>> = tourismDao.getFavoriteTourism()
 
-    fun insertTourism(tourismList: List<TourismEntity>) = tourismDao.insertTourism(tourismList)
+    suspend fun insertTourism(tourismList: List<TourismEntity>) = tourismDao.insertTourism(tourismList)
 
     fun setFavoriteTourism(tourism: TourismEntity, newState: Boolean) {
         tourism.isFavorite = newState

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.dicoding.jetpackcompose.travelingapp.R
 import com.dicoding.jetpackcompose.travelingapp.core.data.source.local.entity.TourismEntity
+import com.dicoding.jetpackcompose.travelingapp.core.domain.model.Tourism
 import com.dicoding.jetpackcompose.travelingapp.core.ui.ViewModelFactory
 import com.dicoding.jetpackcompose.travelingapp.databinding.ActivityDetailTourismBinding
 
@@ -25,16 +26,16 @@ class DetailTourismActivity : AppCompatActivity() {
         binding = ActivityDetailTourismBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar)
 
         val factory = ViewModelFactory.getInstance(this)
         detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
 
-        val detailTourism = intent.getParcelableExtra<TourismEntity>(EXTRA_DATA)
+        val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
         showDetailTourism(detailTourism)
     }
 
-    private fun showDetailTourism(detailTourism: TourismEntity?) {
+    private fun showDetailTourism(detailTourism: Tourism?) {
         detailTourism?.let {
             supportActionBar?.title = detailTourism.name
             binding.content.tvDetailDescription.text = detailTourism.description
