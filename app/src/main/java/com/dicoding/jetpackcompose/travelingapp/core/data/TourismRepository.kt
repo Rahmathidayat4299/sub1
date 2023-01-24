@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.map
 /**
  * Created by Rahmat Hidayat on 23/01/2023.
  */
-class TourismRepository private constructor(
+class TourismRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors

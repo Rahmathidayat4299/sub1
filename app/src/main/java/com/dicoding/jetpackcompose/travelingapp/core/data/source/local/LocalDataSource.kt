@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 /**
  * Created by Rahmat Hidayat on 23/01/2023.
  */
-class LocalDataSource private constructor(private val tourismDao: TourismDao) {
+class LocalDataSource(private val tourismDao: TourismDao) {
 
     companion object {
         private var instance: LocalDataSource? = null

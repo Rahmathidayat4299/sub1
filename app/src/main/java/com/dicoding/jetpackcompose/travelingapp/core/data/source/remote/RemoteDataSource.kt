@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 /**
  * Created by Rahmat Hidayat on 23/01/2023.
  */
-class RemoteDataSource private constructor(private val apiService: ApiService) {
+class RemoteDataSource(private val apiService: ApiService) {
     companion object {
         @Volatile
         private var instance: RemoteDataSource? = null
